@@ -18,9 +18,6 @@ import "./App.css";
 import initFontAwesome from "./utils/initFontAwesome";
 initFontAwesome();
 
-// JV-added 08/Feb/2022
-import { useAuth0 } from "@auth0/auth0-react";
-
 const App = () => {
   const { isLoading, error } = useAuth0();
 
