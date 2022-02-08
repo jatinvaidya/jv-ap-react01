@@ -108,7 +108,20 @@ export const ExternalApiComponent = () => {
               class="alert-link"
               onClick={(e) => handle(e, handleLoginAgain)}
             >
-              log in again
+              log in again (session cookie expired)
+            </a>
+          </Alert>
+        )}
+
+        {state.error === "unauthorized" && (
+          <Alert color="warning">
+            You need to{" "}
+            <a
+              href="#/"
+              class="alert-link"
+              onClick={(e) => handle(e, handleLoginAgain)}
+            >
+              log in again (sensitive application session expired)
             </a>
           </Alert>
         )}
