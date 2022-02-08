@@ -18,11 +18,22 @@ import "./App.css";
 import initFontAwesome from "./utils/initFontAwesome";
 initFontAwesome();
 
+// JV-added 08/Feb/2022
+import { useAuth0 } from "@auth0/auth0-react";
+
 const App = () => {
   const { isLoading, error } = useAuth0();
 
+  //JV-added
+  const {
+    loginWithRedirect
+  } = useAuth0();
+
   if (error) {
-    return <div>Oops... {error.message}</div>;
+    if (error.message === 'x_login_required')
+      loginWithRedirect({ prompt: "login" });
+    else
+      return <div>Oops... {error.message}</div>;
   }
 
   if (isLoading) {
