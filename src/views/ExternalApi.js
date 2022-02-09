@@ -18,6 +18,7 @@ export const ExternalApiComponent = () => {
     getAccessTokenSilently,
     loginWithPopup,
     getAccessTokenWithPopup,
+    loginWithRedirect
   } = useAuth0();
 
   const handleConsent = async () => {
@@ -53,6 +54,10 @@ export const ExternalApiComponent = () => {
 
     await callApi();
   };
+
+  const handlePromptLogin = () => {
+    loginWithRedirect({ prompt: "login" });
+  }
 
   const callApi = async () => {
     try {
@@ -119,7 +124,7 @@ export const ExternalApiComponent = () => {
             <a
               href="#/"
               class="alert-link"
-              onClick={(e) => handle(e, handleLoginAgain)}
+              onClick={(e) => handle(e, handlePromptLogin)}
             >
               log in again (sensitive application session expired)
             </a>
