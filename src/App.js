@@ -22,15 +22,12 @@ const App = () => {
   const { isLoading, error } = useAuth0();
 
   //JV-added
-  const {
-    loginWithRedirect
-  } = useAuth0();
+  const { loginWithRedirect } = useAuth0();
 
   if (error) {
-    if (error.message === 'x_login_required')
+    if (error.message.startsWith("x_login_required"))
       loginWithRedirect({ prompt: "login" });
-    else
-      return <div>Oops... {error.message}</div>;
+    else return <div>Oops... {error.message}</div>;
   }
 
   if (isLoading) {
