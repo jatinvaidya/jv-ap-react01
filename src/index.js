@@ -23,7 +23,7 @@ const providerConfig = {
   ...(config.audience ? { audience: config.audience } : null),
   redirectUri: window.location.origin,
   onRedirectCallback,
-  useRefreshTokens: false,
+  useRefreshTokens: true,
 };
 
 ReactDOM.render(
